@@ -26,12 +26,7 @@ class RetrieveVerse extends Component {
     alert("A name was submitted: " + this.state.searchString);
     event.preventDefault();
     this.setState({ isLoading: true, errorMessage: "" });
-    axios(
-      //"https://api.data.gov.sg/v1/transport/traffic-images?date_time=2021-08-14T22:11:50"
-      //"https://api.data.gov.sg/v1/transport/traffic-images?date_time="
-      //"http://labs.bible.org/api/?passage=John+3:16&type=JSON"
-      `https://bible-api.com/${this.state.searchString}`
-    )
+    axios(`https://bible-api.com/${this.state.searchString}`)
       .then((res) => {
         console.log(`Retrieving data start ${res.data}`);
         if (res.items === 0) {
