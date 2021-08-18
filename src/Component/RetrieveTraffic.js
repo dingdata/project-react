@@ -4,7 +4,7 @@ import axios from "axios";
 import DisplayTraffic from "./DisplayTraffic";
 import Loader from "./Loader";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Button, Col, Card } from "react-bootstrap";
+import { Container, Row, Button, Col, Card, Form } from "react-bootstrap";
 
 class RetrieveTraffic extends Component {
   constructor() {
@@ -34,7 +34,6 @@ class RetrieveTraffic extends Component {
     this.setState({ isLoading: true, errorMessage: "" });
     axios(
       `https://api.data.gov.sg/v1/transport/traffic-images?date_time=${this.state.searchDate}T${this.state.searchTime}:00`
-      //"https://api.data.gov.sg/v1/transport/traffic-images?date_time="
     )
       .then((res) => {
         console.log(
@@ -71,7 +70,48 @@ class RetrieveTraffic extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit}>
+          <Row>
+            <Col class="d-flex align-items-center flex-row">
+              <Form.Label>Date : </Form.Label>
+            </Col>
+            <Col>
+              <Form.Control
+                type="date"
+                value={this.state.searchDate}
+                onChange={this.handleChangeDate}
+              />
+            </Col>
+
+            <Col>
+              <Form.Label>Time : </Form.Label>
+            </Col>
+            <Col>
+              <Form.Control
+                required
+                type="time"
+                value={this.state.searchTime}
+                onChange={this.handleChangeTime}
+              />
+            </Col>
+            <Col>
+              <div class="d-grid d-md-flex justify-content-md-start">
+                <Button variant="primary" type="submit">
+                  Submit
+                </Button>
+              </div>
+            </Col>
+          </Row>
+          {!this.state.errorMessage && (
+            <div>
+              {this.state.isLoading ? <Loader /> : this.displayImages()}
+            </div>
+          )}
+          {this.state.errorMessage && (
+            <div className="err">{this.state.errorMessage}</div>
+          )}
+        </Form>
+        {/* <form onSubmit={this.handleSubmit}>
           <label for="startDate">Date </label>
           <input
             type="date"
@@ -92,7 +132,7 @@ class RetrieveTraffic extends Component {
         )}
         {this.state.errorMessage && (
           <div className="err">{this.state.errorMessage}</div>
-        )}
+        )} */}
       </div>
     );
   }
