@@ -5,8 +5,8 @@ import RetrieveVerse from "./Component/RetriveVerse";
 function App() {
   return (
     <div className="App">
-      <RetrieveTraffic></RetrieveTraffic>
-      {/* <RetrieveVerse></RetrieveVerse> */}
+      {/* <RetrieveTraffic></RetrieveTraffic> */}
+      <RetrieveVerse></RetrieveVerse>
     </div>
   );
 }
