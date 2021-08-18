@@ -5,16 +5,9 @@ import DisplayVerse from "./DisplayVerse";
 import { v4 as uuidv4 } from "uuid";
 
 const RetrieveVerse = () => {
-  const [verses, setVerses] = useState([
-    {
-      id: uuidv4(),
-      versesArray: [],
-      verseString: "",
-      isLoading: false,
-      errorMessage: "",
-    },
-  ]);
+  const [verse, setVerse] = useState("");
   const [searchString, setSearchString] = useState("John 3:16");
+  const [isLoading, setIsLoading] = useState(false);
 
   const onChangeHandler = (event) => {
     event.preventDefault();
@@ -23,8 +16,9 @@ const RetrieveVerse = () => {
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     // alert("A verse is submitted: " + searchString);
-    setVerses({ isLoading: true, errorMessage: "" });
+    setIsLoading(true);
     console.log(`Before Get Verses using axios ${searchString}`);
     axios(`https://bible-api.com/${searchString}`)
       .then((res) => {
@@ -36,30 +30,12 @@ const RetrieveVerse = () => {
           throw emptyDataError;
         }
         console.log(`Retrieving data 2 ${res.data.text}`);
-        setVerses({ verseString: res.data.text, isLoading: false });
+        setVerse(res.data.text);
       })
       .catch((error) => {
         console.error(error);
-        setVerses({
-          isLoading: false,
-          errorMessage: `No Data available for this selection:`,
-        });
+        // TODO: set error message
       });
-  };
-
-  const printVerses = () => {
-    console.log(`print verses ${verses.verseString}`);
-    return verses.map((verses) => (
-      <DisplayVerse verses={verses}> </DisplayVerse>
-    ));
-    // return (
-    //   <div>
-    //     <div>
-    //       <p> {verses.verseString}</p>
-    //       <br></br>
-    //     </div>
-    //   </div>
-    // );
   };
 
   return (
@@ -69,7 +45,7 @@ const RetrieveVerse = () => {
         <input type="text" value={searchString} onChange={onChangeHandler} />
         <input type="submit" value="SearchVerses" />
       </form>
-      {<div>{printVerses()} </div>}
+      <div>{verse}</div>
       {/* {verses.errorMessage && (
         <div>{verses.isLoading ? <Loader /> : printVerses()}</div>
       )}
