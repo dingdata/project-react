@@ -1,9 +1,16 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Button, Col, Card } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  ListGroup,
+  ListGroupItem,
+  Col,
+  Card,
+} from "react-bootstrap";
 
 function DisplayCamInfo({ cameras }) {
-  const { description, image, camera_id } = cameras;
+  const { image, camera_id, location } = cameras;
   return (
     // <div>
     //   <img src={image} alt="trafficImage" />
@@ -11,23 +18,55 @@ function DisplayCamInfo({ cameras }) {
     //   <div>ImageString: {image}</div>
     //   <div>Camera ID: {camera_id}</div>
     // </div>
+    <div className="d-flex">
+      <Card border="primary" bg="light" style={{ width: "30rem" }}>
+        <Card.Img variant="top" src={image} />
+        <Card.Body>
+          <Card.Header>Camera ID - {camera_id}</Card.Header>
+          <Card.Text>Location</Card.Text>
+          <ListGroup className="list-group-flush">
+            <ListGroupItem variant="primary">
+              Longitude:{location.longitude}
+            </ListGroupItem>
+            <ListGroupItem variant="primary">
+              Latitude: {location.latitude}
+            </ListGroupItem>
+          </ListGroup>
+          <Card.Link href={image}>Download image</Card.Link>
+        </Card.Body>
+      </Card>
+      <br></br>
+    </div>
 
-    <Container>
-      <Row className="justify-content-md-center">
-        {Array.from({ length: 1 }).map((_, idx) => (
-          <Col>
-            <Card border="primary" bg="light" style={{ width: "30rem" }}>
-              <Card.Img variant="top" src={image} />
-              <Card.Body>
-                <Card.Header>{camera_id}</Card.Header>
-                <Card.Text>{image}</Card.Text>
-                <Card.Subtitle>{description}</Card.Subtitle>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Container>
+    // <Container fluid="md">
+    //   <Row xs={1} md={2} className="g-4">
+    //     {Array.from({ length: 4 }).map((_, idx) => (
+    //       <Col>
+    //         <Card
+    //           padding="1px"
+    //           border="primary"
+    //           bg="light"
+    //           style={{ width: "30rem" }}
+    //         >
+    //           <Card.Img variant="top" src={image} />
+    //           <Card.Body>
+    //             <Card.Header>Camera ID - {camera_id}</Card.Header>
+    //             <Card.Text>Location</Card.Text>
+    //             <ListGroup className="list-group-flush">
+    //               <ListGroupItem variant="primary">
+    //                 Longitude:{location.longitude}
+    //               </ListGroupItem>
+    //               <ListGroupItem variant="primary">
+    //                 Latitude: {location.latitude}
+    //               </ListGroupItem>
+    //             </ListGroup>
+    //             <Card.Link href={image}>Download image</Card.Link>
+    //           </Card.Body>
+    //         </Card>
+    //       </Col>
+    //     ))}
+    //   </Row>
+    // </Container>
   );
 }
 

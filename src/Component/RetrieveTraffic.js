@@ -4,7 +4,8 @@ import axios from "axios";
 import DisplayTraffic from "./DisplayTraffic";
 import Loader from "./Loader";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Row, Button, Col, Card, Form } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+import "./RetrieveTraffic.css";
 
 class RetrieveTraffic extends Component {
   constructor() {
@@ -70,47 +71,37 @@ class RetrieveTraffic extends Component {
   render() {
     return (
       <div>
-        <Form onSubmit={this.handleSubmit}>
-          <Row>
-            <Col class="d-flex align-items-center flex-row">
-              <Form.Label>Date : </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control
-                type="date"
-                value={this.state.searchDate}
-                onChange={this.handleChangeDate}
-              />
-            </Col>
-
-            <Col>
-              <Form.Label>Time : </Form.Label>
-            </Col>
-            <Col>
-              <Form.Control
-                required
-                type="time"
-                value={this.state.searchTime}
-                onChange={this.handleChangeTime}
-              />
-            </Col>
-            <Col>
-              <div class="d-grid d-md-flex justify-content-md-start">
-                <Button variant="primary" type="submit">
-                  Submit
-                </Button>
-              </div>
-            </Col>
-          </Row>
-          {!this.state.errorMessage && (
-            <div>
-              {this.state.isLoading ? <Loader /> : this.displayImages()}
-            </div>
-          )}
-          {this.state.errorMessage && (
-            <div className="err">{this.state.errorMessage}</div>
-          )}
+        <Form
+          className="d-flex justify-content-center"
+          onSubmit={this.handleSubmit}
+        >
+          <div className="d-flex form-field">
+            <Form.Label className="form-label">Date:</Form.Label>
+            <Form.Control
+              type="date"
+              value={this.state.searchDate}
+              onChange={this.handleChangeDate}
+            />
+          </div>
+          <div className="d-flex form-field">
+            <Form.Label className="form-label">Time:</Form.Label>
+            <Form.Control
+              required
+              type="time"
+              value={this.state.searchTime}
+              onChange={this.handleChangeTime}
+            />
+          </div>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
         </Form>
+        {!this.state.errorMessage && (
+          <div>{this.state.isLoading ? <Loader /> : this.displayImages()}</div>
+        )}
+        {this.state.errorMessage && (
+          <div className="err">{this.state.errorMessage}</div>
+        )}
         {/* <form onSubmit={this.handleSubmit}>
           <label for="startDate">Date </label>
           <input

@@ -1,4 +1,11 @@
-label {
+.displayGallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-self: auto;
+  padding: "2px";
+}
+
+/* label {
   display: block;
   font: 1rem "Fira Sans", sans-serif;
 }
@@ -6,4 +13,4 @@ label {
 input,
 label {
   margin: 0.4rem 0;
-}
+} */
