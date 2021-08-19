@@ -2,6 +2,7 @@ import React, { useState, Component } from "react";
 import axios from "axios";
 import Loader from "./Loader";
 import DisplayVerse from "./DisplayVerse";
+import "./RetrieveVerse.css";
 import { v4 as uuidv4 } from "uuid";
 
 const RetrieveVerse = () => {
@@ -51,6 +52,7 @@ const RetrieveVerse = () => {
 
   return (
     <div>
+      <div className="versefont">Retrieve Verses</div>
       <form onSubmit={handleSubmit}>
         <label>Verse you want to find (e.g "John 3:16"):</label>
         <input type="text" value={searchString} onChange={onChangeHandler} />

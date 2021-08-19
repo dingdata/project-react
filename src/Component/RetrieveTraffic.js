@@ -71,7 +71,8 @@ class RetrieveTraffic extends Component {
   render() {
     return (
       <div>
-        <div> Singapore Traffic Cams </div>
+        <div className="trafficfont"> Singapore Traffic Cams </div>
+
         <Form
           className="d-flex justify-content-center"
           onSubmit={this.handleSubmit}
