@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from "uuid";
 const RetrieveVerse = () => {
   const [verse, setVerse] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [reference, setReference] = useState("");
   const [searchString, setSearchString] = useState("John 3:16");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,8 +33,11 @@ const RetrieveVerse = () => {
           console.log(`Retrieving data No such verse error`);
           throw emptyDataError;
         }
-        console.log(`Retrieving data 2 ${res.data.text}`);
+        console.log(
+          `Retrieving data 2 ${res.data.text} -  ${res.data.reference}`
+        );
         setVerse(res.data.text);
+        setReference(res.data.reference);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -45,10 +49,6 @@ const RetrieveVerse = () => {
       });
   };
 
-  const printVerse = () => {
-    return <DisplayVerse verse={verse}> </DisplayVerse>;
-  };
-
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -57,10 +57,19 @@ const RetrieveVerse = () => {
         <input type="submit" value="SearchVerses" />
       </form>
       {/* <div>{verse}</div> */}
-      {console.log(`What is error message of !errorMessage ${errorMessage}`)}
-      {console.log(`What is error message of !isLoading ${!isLoading}`)}
-      {!errorMessage && verse && (
-        <div>{isLoading ? <Loader /> : { verse }}</div>
+      {/* {console.log(`What is error message of !errorMessage ${errorMessage}`)}
+      {console.log(`What is error message of !isLoading ${!isLoading}`)} */}
+      {!errorMessage && (
+        <div>
+          <div>Dashboard</div>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <DisplayVerse verse={verse} reference={reference}>
+              {" "}
+            </DisplayVerse>
+          )}{" "}
+        </div>
       )}
       {errorMessage && <div className="err">{errorMessage}</div>}
     </div>

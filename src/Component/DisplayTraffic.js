@@ -7,12 +7,12 @@ function DisplayTraffic({ trafficCam }) {
   console.log(`We are in display Traffic ${typeof trafficCam.cameras}`);
   console.log(`We are in display Traffic images ${trafficCam.cameras.length}`);
   return (
-    <div>
+    <div data-testid="retrieveTraffic">
       <div>
         You have retrieve traffic at:{" "}
         {new Date(Date.parse(timestamp)).toLocaleString()}
       </div>
-      <div className="displayGallery">
+      <div className="displayGallery d-flex justify-content-center">
         {trafficCam.cameras.map((cameras) => (
           <DisplayCamInfo cameras={cameras} />
         ))}

@@ -30,7 +30,7 @@ class RetrieveTraffic extends Component {
   }
 
   handleSubmit(event) {
-    alert("A name was submitted: " + this.state.searchDate);
+    // alert("A name was submitted: " + this.state.searchDate);
     event.preventDefault();
     this.setState({ isLoading: true, errorMessage: "" });
     axios(
@@ -71,6 +71,7 @@ class RetrieveTraffic extends Component {
   render() {
     return (
       <div>
+        <div> Singapore Traffic Cams </div>
         <Form
           className="d-flex justify-content-center"
           onSubmit={this.handleSubmit}
@@ -92,7 +93,7 @@ class RetrieveTraffic extends Component {
               onChange={this.handleChangeTime}
             />
           </div>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" type="submit" aria-label="getTraffic">
             Submit
           </Button>
         </Form>
