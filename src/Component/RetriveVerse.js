@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const RetrieveVerse = () => {
   const [verse, setVerse] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [searchString, setSearchString] = useState("John 3:16");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -18,24 +19,34 @@ const RetrieveVerse = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // alert("A verse is submitted: " + searchString);
-    setIsLoading(true);
+    setIsLoading(true); // Anticipate Error
+    setErrorMessage("");
     console.log(`Before Get Verses using axios ${searchString}`);
+
     axios(`https://bible-api.com/${searchString}`)
       .then((res) => {
         console.log(`Retrieving data start ${res.data}`);
-        if (res.items === 0) {
+        if (res.data.text === "") {
           const emptyDataError = new Error("No such verses");
-          emptyDataError.statusCode = 500;
+          emptyDataError.statusCode = 404;
           console.log(`Retrieving data No such verse error`);
           throw emptyDataError;
         }
         console.log(`Retrieving data 2 ${res.data.text}`);
         setVerse(res.data.text);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error(error);
+        setErrorMessage("No such verses");
+        setIsLoading(false);
+        console.log(`ERROR`);
         // TODO: set error message
       });
+  };
+
+  const printVerse = () => {
+    return <DisplayVerse verse={verse}> </DisplayVerse>;
   };
 
   return (
@@ -45,11 +56,13 @@ const RetrieveVerse = () => {
         <input type="text" value={searchString} onChange={onChangeHandler} />
         <input type="submit" value="SearchVerses" />
       </form>
-      <div>{verse}</div>
-      {/* {verses.errorMessage && (
-        <div>{verses.isLoading ? <Loader /> : printVerses()}</div>
+      {/* <div>{verse}</div> */}
+      {console.log(`What is error message of !errorMessage ${errorMessage}`)}
+      {console.log(`What is error message of !isLoading ${!isLoading}`)}
+      {!errorMessage && verse && (
+        <div>{isLoading ? <Loader /> : { verse }}</div>
       )}
-      {verses.errorMessage && <div className="err">{verses.errorMessage}</div>} */}
+      {errorMessage && <div className="err">{errorMessage}</div>}
     </div>
   );
 };
