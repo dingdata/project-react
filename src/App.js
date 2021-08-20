@@ -8,19 +8,19 @@ import { LinkContainer } from "react-router-bootstrap";
 import Main from "./Component/DisplayStart";
 function App() {
   return (
-    <div className="App">
+    <div className="App" data-testid="App">
       <BrowserRouter>
         <Navbar expand="md" className="sticky-top navbar-dark bg-primary">
-          <LinkContainer to="/main">
+          <LinkContainer aria-label="main" to="/main">
             <Navbar.Brand> DLM Project </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="navfonts" activeClassName="active">
-              <LinkContainer to="/traffic">
+              <LinkContainer aria-label="traffic" to="/traffic">
                 <Nav.Link>Retrieve Traffic</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/verse">
+              <LinkContainer aria-label="verse" to="/verse">
                 <Nav.Link>Retrieve Verse</Nav.Link>
               </LinkContainer>
             </Nav>

@@ -10,7 +10,9 @@
   color: red;
   text-decoration: underline;
 }
-
+.bckimg {
+  background-image: url("https://dg.imgix.net/i-read-the-bible-and-feel-nothing-what-should-i-do-en/landscape/i-read-the-bible-and-feel-nothing-what-should-i-do-174a71c3c27f0e4eb89dd05b778621b4.jpg?ts=1513795672&ixlib=rails-4.2.0&fit=crop&w=2000&h=1050");
+}
 .navbar {
   -webkit-box-shadow: 0 8px 6px -6px #999;
   -moz-box-shadow: 0 8px 6px -6px #999;

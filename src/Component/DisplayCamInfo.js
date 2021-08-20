@@ -1,13 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import {
-  Container,
-  Row,
-  ListGroup,
-  ListGroupItem,
-  Col,
-  Card,
-} from "react-bootstrap";
+import { ListGroup, ListGroupItem, Card } from "react-bootstrap";
 
 function DisplayCamInfo({ cameras }) {
   const { image, camera_id, location } = cameras;

@@ -6,11 +6,13 @@ import Loader from "./Loader";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Form } from "react-bootstrap";
 import "./RetrieveTraffic.css";
+import { v4 as uuidv4 } from "uuid";
 
 class RetrieveTraffic extends Component {
   constructor() {
     super();
     this.state = {
+      id: uuidv4(),
       trafficCams: [],
       errorMessage: "",
       isLoading: false,
@@ -50,7 +52,11 @@ class RetrieveTraffic extends Component {
           emptyDataError.statusCode = 400;
           throw emptyDataError;
         }
-        this.setState({ trafficCams: res.data.items, isLoading: false });
+        this.setState({
+          id: uuidv4(),
+          trafficCams: res.data.items,
+          isLoading: false,
+        });
       })
       .catch((error) => {
         console.error(error);
@@ -71,7 +77,7 @@ class RetrieveTraffic extends Component {
   render() {
     return (
       <div>
-        <div className="trafficfont"> Singapore Traffic Cams </div>
+        <div className=""> Singapore Traffic Cams </div>
 
         <Form
           className="d-flex justify-content-center"

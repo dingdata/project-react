@@ -1,15 +1,17 @@
-import React, { useState, Component } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Loader from "./Loader";
 import DisplayVerse from "./DisplayVerse";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Button, Form } from "react-bootstrap";
 import "./RetrieveVerse.css";
-import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 
 const RetrieveVerse = () => {
   const [verse, setVerse] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [reference, setReference] = useState("");
-  const [searchString, setSearchString] = useState("John 3:16");
+  const [searchString, setSearchString] = useState("Psalms 119:105");
   const [isLoading, setIsLoading] = useState(false);
 
   const onChangeHandler = (event) => {
@@ -53,15 +55,25 @@ const RetrieveVerse = () => {
   return (
     <div>
       <div className="versefont">Retrieve Verses</div>
-      <form onSubmit={handleSubmit}>
-        <label>Verse you want to find (e.g "John 3:16"):</label>
-        <input type="text" value={searchString} onChange={onChangeHandler} />
-        <input type="submit" value="SearchVerses" />
-      </form>
+      <Form className="d-flex justify-content-center" onSubmit={handleSubmit}>
+        <Form.Label className="form-label">
+          Verse you want to find (e.g "John 3:16"):
+        </Form.Label>
+        <div className="d-flex form-field">
+          <Form.Control
+            type="text"
+            value={searchString}
+            onChange={onChangeHandler}
+          />
+        </div>
+        <Button variant="primary" type="submit">
+          SearchVerses
+        </Button>
+      </Form>
       {/* <div>{verse}</div> */}
       {/* {console.log(`What is error message of !errorMessage ${errorMessage}`)}
       {console.log(`What is error message of !isLoading ${!isLoading}`)} */}
-      {!errorMessage && (
+      {!errorMessage && verse && (
         <div>
           <div>Dashboard</div>
           {isLoading ? (
