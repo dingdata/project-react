@@ -66,7 +66,7 @@ const RetrieveVerse = () => {
             onChange={onChangeHandler}
           />
         </div>
-        <Button variant="primary" type="submit">
+        <Button aria-label="SearchVerses" variant="primary" type="submit">
           SearchVerses
         </Button>
       </Form>
