@@ -19,7 +19,7 @@ const DisplayVerseBoard = ({ verseArray, deleteReference }) => {
   // };
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex justify-content-between flex-wrap">
       <div>
         <Card border="secondary" bg="info" style={{ width: "20rem" }}>
           <Card.Header bg="light">

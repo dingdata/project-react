@@ -4,12 +4,12 @@ import "./DisplayTraffic.css";
 
 function DisplayTraffic({ trafficCam }) {
   const { timestamp } = trafficCam;
-  console.log(`We are in display Traffic ${typeof trafficCam.cameras}`);
-  console.log(`We are in display Traffic images ${trafficCam.cameras.length}`);
+  // console.log(`We are in display Traffic ${typeof trafficCam.cameras}`);
+  // console.log(`We are in display Traffic images ${trafficCam.cameras.length}`);
   return (
     <div data-testid="retrieveTraffic">
       <div>
-        You have retrieve traffic at:{" "}
+        You have retrieved LTA traffic images at:{" "}
         {new Date(Date.parse(timestamp)).toLocaleString()}
       </div>
       <div className="displayGallery d-flex justify-content-center">

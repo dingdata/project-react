@@ -9,7 +9,7 @@ test("Render default test", () => {
 });
 
 test("Should receive Traffic info when clicked", async () => {
-  const { getByText, findAllByTestId } = render(<RetrieveTraffic />);
+  const { getByText } = render(<RetrieveTraffic />);
   const getTrafficSubmit = getByText("Submit");
   fireEvent.click(getTrafficSubmit);
   // await waitFor(() => screen.findByText("2703"));

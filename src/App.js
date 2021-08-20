@@ -30,7 +30,7 @@ function App() {
         <Route path="/traffic" component={RetrieveTraffic} />
         <Route path="/verse" component={RetrieveVerse} />
       </BrowserRouter>
-      <Navbar fixed="bottom" className="navbar-dark bg-primary">
+      <Navbar expand="xxl" fixed="bottom" className="navbar-dark bg-primary">
         <Row className="footfonts">
           <Col xs={3}>Report Vulnerability</Col>
 
@@ -38,7 +38,7 @@ function App() {
           <Col xs={3}>Terms and Condition</Col>
 
           <Col xs={4}>(C) 2021 Govt of Singapore</Col>
-          <Col>Last Updated 20 Aug 2021</Col>
+          <Col xs={4}>Last Updated 20 Aug 2021</Col>
         </Row>
       </Navbar>
     </div>

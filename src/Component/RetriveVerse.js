@@ -75,7 +75,7 @@ const RetrieveVerse = () => {
       {console.log(`What is error message of !isLoading ${!isLoading}`)} */}
       {!errorMessage && verse && (
         <div>
-          <div>Dashboard</div>
+          <div className="d-flex justify-content-center">Dashboard</div>
           {isLoading ? (
             <Loader />
           ) : (

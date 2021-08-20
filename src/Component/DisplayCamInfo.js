@@ -12,8 +12,16 @@ function DisplayCamInfo({ cameras }) {
     //   <div>Camera ID: {camera_id}</div>
     // </div>
     <div className="d-flex">
-      <Card border="primary" bg="light" style={{ width: "30rem" }}>
-        <Card.Img variant="top" src={image} />
+      <Card
+        border="primary"
+        bg="light"
+        style={{ width: "30rem", padding: "5px" }}
+      >
+        <Card.Img
+          variant="top"
+          src={image}
+          style={{ width: "30rem", height: "20rem" }}
+        />
         <Card.Body>
           <Card.Header>Camera ID - {camera_id}</Card.Header>
           <Card.Text>Location</Card.Text>
