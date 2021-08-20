@@ -25,7 +25,17 @@ const DisplayVerse = ({ verse, reference }) => {
       referenceString: reference,
     };
     setVerseArray([...verseArray, verseObj]); // need to set original array with new object
+    // setVerseArray(verseArray.push(verseObj)); // need to set original array with new object
     console.log(`I am at Add to Board ${verseArray} - ${reference}`);
+  };
+
+  const deleteReference = (id) => {
+    console.log(id);
+    console.log(verseArray);
+    const updatedVerseArray = [...verseArray].filter(
+      (verseArray) => verseArray.referenceString !== id
+    );
+    setVerseArray(updatedVerseArray);
   };
 
   return (
@@ -38,19 +48,23 @@ const DisplayVerse = ({ verse, reference }) => {
           <button onClick={(event) => addToBoard()}>Add-To-Board</button>
         </Card.Body>
       </Card>
-      <div>
-        {verseArray.map((verseArray) => (
-          <DisplayVerseBoard verseArray={verseArray}> </DisplayVerseBoard>
-        ))}
-        {/* {!verse &&
+      {console.log(verseArray)}
+      {verseArray.map((verseArray) => (
+        <DisplayVerseBoard
+          verseArray={verseArray}
+          deleteReference={deleteReference}
+        >
+          {" "}
+        </DisplayVerseBoard>
+      ))}
+      {/* {!verse &&
         verseArray.map(() => (
           <DisplayVerseBoard verseArray={verseArray}> </DisplayVerseBoard>
         ))} */}
 
-        {/* {verseArray.map(() => (
+      {/* {verseArray.map(() => (
         <DisplayVerseBoard verseObj={verseObj}></DisplayVerseBoard>
       ))} */}
-      </div>
     </div>
   );
 };

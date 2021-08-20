@@ -2,6 +2,9 @@
   text-align: center;
 }
 
+.footfonts {
+  font-size: small;
+}
 .navfonts {
   color: #000;
   margin-left: 10px;

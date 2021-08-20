@@ -54,7 +54,7 @@ const RetrieveVerse = () => {
 
   return (
     <div>
-      <div className="versefont">Retrieve Verses</div>
+      <div className="versefont bckimg">Retrieve Verses</div>
       <Form className="d-flex justify-content-center" onSubmit={handleSubmit}>
         <Form.Label className="form-label">
           Verse you want to find (e.g "John 3:16"):

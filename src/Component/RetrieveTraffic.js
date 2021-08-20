@@ -16,7 +16,7 @@ class RetrieveTraffic extends Component {
       trafficCams: [],
       errorMessage: "",
       isLoading: false,
-      searchDate: "2021-08-17",
+      searchDate: "2021-08-19",
       searchTime: "10:00",
     };
     this.handleChangeDate = this.handleChangeDate.bind(this);
@@ -77,7 +77,7 @@ class RetrieveTraffic extends Component {
   render() {
     return (
       <div>
-        <div className=""> Singapore Traffic Cams </div>
+        <div className="trafficfont"> Singapore Traffic Cams </div>
 
         <Form
           className="d-flex justify-content-center"

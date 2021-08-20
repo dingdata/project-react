@@ -2,11 +2,21 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Button } from "react-bootstrap";
 import "./DisplayVerseBoard.css";
+import DisplayVerse from "./DisplayVerse";
 
-const DisplayVerseBoard = ({ verseArray }) => {
+const DisplayVerseBoard = ({ verseArray, deleteReference }) => {
   console.log(verseArray); //Array of Objects
 
   const { verseString, referenceString } = verseArray;
+
+  // const deleteReference = (id) => {
+  //   console.log(id);
+  //   console.log(verseArray);
+  //   const updatedVerseArray = [...verseArray].filter(
+  //     (verseArray) => verseArray.referenceString !== id
+  //   );
+  //   setVerseArray(updatedVerseArray);
+  // };
 
   return (
     <div className="d-flex justify-content-center">
@@ -14,12 +24,14 @@ const DisplayVerseBoard = ({ verseArray }) => {
         <Card border="secondary" bg="info" style={{ width: "20rem" }}>
           <Card.Header bg="light">
             {referenceString}{" "}
+            {/* <button onClick="#" className="image bckimg"> */}
             <img
               src={`${process.env.PUBLIC_URL}/trash.svg`}
               className="image"
-              onClick="#"
+              onClick={() => deleteReference(referenceString)}
               alt="trash"
             />
+            {/* </button> */}
           </Card.Header>
           <Card.Body>
             <Card.Text>{verseString}</Card.Text>
