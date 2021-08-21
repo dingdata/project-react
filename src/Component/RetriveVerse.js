@@ -13,12 +13,40 @@ const RetrieveVerse = () => {
   const [reference, setReference] = useState("");
   const [searchString, setSearchString] = useState("Psalms 119:105");
   const [isLoading, setIsLoading] = useState(false);
-
+  /*
+const [verses, setVerses] = useState([]);
+<DisplayVerses 
+  verses={verses} 
+  addToBoardHandler={addToBoard} 
+  deleteFromBoardHandler={deleteFromBoard}
+/>
+*/
   const onChangeHandler = (event) => {
     event.preventDefault();
     console.log(`Enter event Target Value ${event.target.value}`);
     setSearchString(event.target.value);
   };
+
+  // const addToBoard = () => {
+  //   //event.preventDefault();
+  //   console.log(`I am at Add to Board ${verseArray} - ${reference}`);
+  //   const verseObj = {
+  //     verseString: verse,
+  //     referenceString: reference,
+  //   };
+  //   setVerseArray([...verseArray, verseObj]); // need to set original array with new object
+  //   // setVerseArray(verseArray.push(verseObj)); // need to set original array with new object
+  //   console.log(`I am at Add to Board ${verseArray} - ${reference}`);
+  // };
+
+  // const deleteReference = (id) => {
+  //   console.log(id);
+  //   console.log(verseArray);
+  //   const updatedVerseArray = [...verseArray].filter(
+  //     (verseArray) => verseArray.referenceString !== id
+  //   );
+  //   setVerseArray(updatedVerseArray);
+  // };
 
   const handleSubmit = (event) => {
     event.preventDefault();

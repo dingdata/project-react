@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  render,
-  screen,
-  fireEvent,
-  waitFor,
-  getByLabelText,
-} from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import RetriveVerse from "./RetriveVerse";
 import DisplayVerse from "./DisplayVerse";
 import DisplayVerseBoard from "./DisplayVerseBoard";
